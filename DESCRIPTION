@@ -1,0 +1,25 @@
+Package: tecan
+Type: Package
+Title: Read Absorbance Files of the Tecan Plate Reader Infinite 200
+Version: 0.1.0
+Author: Lukas PM Kremer
+Maintainer: Lukas PM Kremer <l.kremer@dkfz.de>
+Description: Automatically determines the table format and the number of wells that were recorded.
+    Reads all absorbance values accordingly and records all sheet names and file names.
+    Ignores but warns about empty or malformatted sheets.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    magrittr,
+    readxl,
+    cellranger,
+    stringr,
+    tidyselect,
+    dplyr,
+    tidyr,
+    tibble,
+    glue,
+    stats,
+    vctrs
+RoxygenNote: 7.1.0
