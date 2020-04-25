@@ -33,3 +33,11 @@ Warning messages:
 2: In autoread_tecan_sheet(xlsx_path, sheet = s) :
   Ignoring sheet 'random empty sheet' of 'tecan_example.xlsx' since it has the wrong format.
 ```
+## Reading many files
+```R
+> library(tecan)
+> library(dplyr)
+
+> tecan_files <- Sys.glob("some/path/*.xlsx")
+> tbl <- lapply(tecan_files, read_tecan) %>% bind_rows()
+```
