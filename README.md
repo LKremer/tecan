@@ -4,6 +4,10 @@
 Automatically determines the table format and the number of wells that were recorded.
 Reads all absorbance values accordingly and records all sheet names and file names.
 Ignores but warns about empty or malformatted sheets.
+## Installation
+```R
+> devtools::install_github("LKremer/tecan")
+```
 
 ## Example
 ```R
