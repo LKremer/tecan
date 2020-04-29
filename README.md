@@ -28,11 +28,15 @@ Ignores but warns about empty or malformatted sheets.
 10 B1                0.6              0.75 plate format 3×9 tecan_example.xlsx
 # … with 41 more rows
 Warning messages:
-1: In autoread_tecan_sheet(xlsx_path, sheet = s) :
-  Ignoring sheet 'unrelated sheet' of 'tecan_example.xlsx' since it has the wrong format.
+1: In assemble_tbl(blue, yellow, xlsx_path, ...) :
+  Sheet 'missing values' of 'tecan_example.xlsx' has missing data (empty table cells).
 2: In autoread_tecan_sheet(xlsx_path, sheet = s) :
+  Ignoring sheet 'unrelated sheet' of 'tecan_example.xlsx' since it has the wrong format.
+3: In autoread_tecan_sheet(xlsx_path, sheet = s) :
   Ignoring sheet 'random empty sheet' of 'tecan_example.xlsx' since it has the wrong format.
 ```
+Read the warning messages carefully!
+
 ## Reading many files
 ```R
 > library(tecan)
