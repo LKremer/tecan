@@ -85,7 +85,6 @@ sniff_tecan_fmt <- function(xlsx_path, ...) {
 extract_absorbance_platefmt <- function(xlsx_path, range, ...) {
   readxl::read_excel(xlsx_path, range = range, ...) %>%
     dplyr::select(`<>`, tidyselect::matches("^\\d+")) %>%
-    tidyr::drop_na() %>%
     dplyr::mutate_at(dplyr::vars(tidyselect::matches("^\\d+")), as.numeric) %>%
     tidyr::pivot_longer(tidyselect::matches("^\\d+"), values_to = "absorbance") %>%
     tidyr::unite(well, c("<>", "name"), sep = "")
@@ -121,7 +120,13 @@ assemble_tbl <- function(blue, yellow, xlsx_path, ...) {
     dplyr::mutate(sheetname = sheet_name) %>%
     dplyr::filter(stringr::str_detect(well, "^[A-Z]\\d+"))
 
-  stopifnot(all(stats::complete.cases(tbl)))
+  if (!all(stats::complete.cases(tbl))) {
+    warning(
+      glue::glue(
+        "Sheet '{sheet_name}' of '{basename(xlsx_path)}' has missing data (empty table cells)."
+      )
+    )
+  }
   tbl
 }
 
